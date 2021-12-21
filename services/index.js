@@ -35,14 +35,12 @@ export const getProducts = () => (dispatch) => {
   return dispatch(productList(products));
 };
 
-export const getLogout = () => (dispatch) => {
+export const logout = () => (dispatch) => {
   return dispatch(signOut());
 };
 
 export const removeProductItem = (id) => (dispatch) => {
-  products = products.filter((item) => {
-    return id !== item.id;
-  });
+  products = products.filter((item) => id !== item.id);
 
   return dispatch(removeProduct(products));
 };

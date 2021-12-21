@@ -21,6 +21,8 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const userData = JSON.parse(sessionStorage.getItem('users'));
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +59,7 @@ class App extends Component {
 
   signOut = () => {
     this.setState({ user: null });
-    this.props.getLogout();
+    this.props.logout();
     sessionStorage.clear();
     fakeAuth.hasLogin = false;
   };
@@ -71,7 +73,6 @@ class App extends Component {
   };
 
   render() {
-    let userData = JSON.parse(sessionStorage.getItem('users'));
     return (
       <Switch>
         <Route
@@ -111,11 +112,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: () => dispatch(getProducts()),
     getUser: () => dispatch(getUser()),
-    getLogout: () => dispatch(getLogout()),
+    signOut: () => dispatch(signOut()),
     removeProductItem: (id) => dispatch(removeProductItem(id)),
     addProductItem: (data) => dispatch(addProductItem(data)),
   };
 };
+
 const mapStateToProps = (state) => {
   return {
     dashboard: state.Dashboard,

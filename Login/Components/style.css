@@ -1,0 +1,4 @@
+.error-fields, .form-error{ display: none}
+.has-error .error-fields,
+.has-error .form-error
+{color: red; font-size: 10pt; display: block}
